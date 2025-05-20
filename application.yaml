@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: presentation
+spec:
+  source:
+    repoURL: "https://github.com/operator-sdk-demo/slide-config.git"
+    targetRevision: "HEAD"
+    path: ./
+  project: "default"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: "main"
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,21 @@
+configs:
+  cm:
+    resource.customizations: |
+      networking.k8s.io/Ingress:
+        health.lua: |
+          hs = {}
+          hs.status = "Healthy"
+          return hs
+  params:
+    server.insecure: true
+    repoServer: "argocd.localhost"
+
+server:
+  ingress:
+    enabled: true
+    labels: {}
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: web
+      traefik.ingress.kubernetes.io/router.priority: 100
+    ingressClassName: traefik
+    hostname: argocd.localhost
