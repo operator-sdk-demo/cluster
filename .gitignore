@@ -1,0 +1,11 @@
+Session.vim
+
+values.yaml
+
+pullsecret_parsed.yaml
+
+manifests/
+
+
+# Ignore DevSpace cache and log folder
+.devspace/
